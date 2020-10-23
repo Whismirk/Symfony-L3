@@ -1,3 +1,8 @@
+
+### Installation 
+
+`composer require --dev symfony/profiler-pack`
+
 # Création de la page d'accueil
 
 Pour mettre en place page d'accueil, inspirez-vous de ce qui a été fait dans l'exercice 3.
