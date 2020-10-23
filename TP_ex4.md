@@ -1,5 +1,5 @@
 
-### Installation 
+### Installation du profiler
 
 `composer require --dev symfony/profiler-pack`
 
