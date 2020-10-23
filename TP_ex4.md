@@ -14,7 +14,7 @@ Quelques indications pour vous aider :
 * Créer une entité `Homepage` avec comme propriétés :
     * `title` : type `string` - Titre principal de la page
     * `body` : type `text` - Texte sous le titre principal
-    * `titleAbout` : type `title` - Titre de la section "À propos" 
+    * `titleAbout` : type `string` - Titre de la section "À propos" 
     * `textAbout` : type `text` - Texte sous le titre "À propos"
 * Créer le CRUD pour l'entité `Homepage`
     * Modifier les templates TWIG de manière à séparer les pages de l'espace public de celle de l'espace d'administration, comme déjà vu dans les exercices précédents.
