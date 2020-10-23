@@ -254,4 +254,4 @@ Vous pouvez ensuite reprendre votre travail de la partie "Modification de la lis
 
 Le résultat peut ressembler à ça : 
 
-![Export Config](imgs/article_show.png)
+![Export Config](imgs/article_show.PNG)
