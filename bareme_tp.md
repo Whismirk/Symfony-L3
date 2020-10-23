@@ -29,10 +29,9 @@ Vous trouverez ci-dessous les points à remplir pour obtenir un maximum de point
         - Administration (_Liste des demandes de contact_)
         - Formulaire (_Formulaire de demande de contact fonctionnel / Message de confirmation suite à la demande_)
     * Page d'accueil
-    
         - Administration (_Création/Modification de la page d'accueil_)
         - Espace public (_Intégration de la page d'accueil créée en tant que page d'accueil du site_)
-    * Page des offres 
+    * Page des offres - Optionnel
         - Administration (_Création / édition / suppression_)
         - Espace public (_Liste des offres / Bouton de souscription à une offre - qui ne fonctionne pas pour le moment_)
     * Authentification (_Inscription / Connexion / Déconnexion / Espace utilisateur_ )
