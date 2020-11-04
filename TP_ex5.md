@@ -22,7 +22,7 @@ La commande va vous demander plusieurs informations :
 * Entrez un nom de propriété qui sera le nom «d'affichage» unique de l'utilisateur. Gardez la valeur par défaut `email`.
 * Est-ce que l'application a besoin de hasher/vérifier les mots de passe. **Évidemment oui** 
 
-![Export Config](imgs/make_user.png)
+![Export Config](imgs/make_user.PNG)
 
 Les fichiers suivants vont être créés : 
 * `src/Entity/User.php` : Entité représentant les utilisateurs
