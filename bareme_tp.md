@@ -20,7 +20,6 @@ Vous trouverez ci-dessous les points à remplir pour obtenir un maximum de point
     * Navigation (_Liens fonctionnels_) 
         +   Bannière / Entête / Footer
         +   Pages des articles
-        +   Pages des offres
         +   Page de contact
     * Espaces Actualités
         - Administration (_Création/édition/suppression d'un article_)
