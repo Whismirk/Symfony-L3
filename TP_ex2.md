@@ -107,7 +107,7 @@ Créons ensuite le fichier `admin/layout.html.twig` :
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block logo %}
-    <a class="navbar-brand" href="{{ path('admin_index')}}">
+    <a class="navbar-brand" href="{{ path('admin')}}">
         <img src="{{asset('images/admin_logo.png')}}" style="height: 110px;" alt="image">
     </a>
 {% endblock %}
@@ -139,6 +139,8 @@ Créons ensuite le fichier `admin/layout.html.twig` :
 
 {% endblock %}
 ```
+
+Remplacer dans `admin/index.html.twig`  la ligne `{% extends 'base.html.twig' %}` par `{% extends 'admin/layout.html.twig' %}` 
 
 > Vous pouvez constater que la page `/admin` a bien changé d'apparence. 
 
@@ -188,35 +190,36 @@ Maintenant que nous avons deux designs différents pour les espaces administrati
 L'idée ici est de reprendre le morceau de HTML suivant, pour afficher les articles :
  
 ```html
-    <div class="row">
-            <div class="col-md-12">
-                <div class="full">
-                    <div class="heading_main text_align_center">
-                        <h2><span class="theme_color"></span>News</h2>
+{% block body %}
+  <div class="section layout_padding padding_top_0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2><span class="theme_color"></span>Actualités</h2>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="full news_blog">
-                    <img class="img-responsive" src="{{ asset('images/b1.png') }}" alt="#" />
-                    <div class="overlay"><a class="main_bt transparent" href="#">View</a></div>
-                    <div class="blog_details">
-                        <h3>Bitcoin News</h3>
-                        <p>pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                    </div>
-                </div>
+            <div class="row">
+                {% for article in articles %}
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="full news_blog">
+                                <img class="img-responsive" src="{{ asset('images/b'~ loop.index ~'.png') }}" alt="#" />
+                                <div class="overlay">><a class="main_bt transparent" href="{{ path('article_show', { 'id' : article.id }) }}">Voir</a></div>
+                                <div class="blog_details">
+                                    <h3>{{ article.title }}</h3>
+                                    <p>pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                </div>
+                            </div>
+                        </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+{% endblock %}
 ``` 
-
-> Astuces : 
-> * Le travail est à faire dans le fichier `article/index.html.twig`
-> * Ce  morceau de template doit être mis dans le block `body`
-> * Rajoutez aux balises `<a>` la route qui permet de voir un article `href="{{ path('article_show', { 'id' : article.id }) }}"`
-> * Remplacez le titre `Bitcoin News` par le `{{ article.title }}`
 
 #### Modification de la page d'un article
 
@@ -251,4 +254,4 @@ Vous pouvez ensuite reprendre votre travail de la partie "Modification de la lis
 
 Le résultat peut ressembler à ça : 
 
-![Export Config](imgs/article_show.png)
+![Export Config](imgs/article_show.PNG)

@@ -142,7 +142,7 @@ Le livrable doit être exempt de bugs, comprendre le maximum de fonctionnalités
 
 ###### Gestion des utilisateurs
 
-> L'administrateur peut consulter/créer/activer/désactiver/bloquer des comptes utilisateurs.
+> L'administrateur peut consulter/éditer/bloquer/débloquer des comptes utilisateurs.
 
 
 ##### Espace communication 
