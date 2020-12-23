@@ -1,0 +1,57 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Offres{% endblock %}
+
+{% block body %}
+    <h1>Offres</h1>
+
+    <style>
+        .btn
+        {
+            position: relative;
+            left: 12px;
+            transform: scale(1.1);
+        }
+        .btn:hover
+        {
+            transition-duration: 0.5s;
+            transform: scale(1.2);
+            color: orange;
+        }
+        .act:hover
+        {
+            transform: scale(1.1);
+        }
+    </style>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Résumé</th>
+                <th>Abonnés</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offer in offers %}
+            <tr>
+                <td>{{ offer.title }}</td>
+                <td>{{ offer.price }}</td>
+                <td>{{ offer.introText }}</td>
+                <td>{{ offer.getSubscriptions()|length }}</td>
+                <td>
+                    <a href="{{ path('offer_edit', {'id': offer.id}) }}"><b>Modifier</b></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucune offre existante.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('offer_new') }}" class="btn"><b>Proposer une nouvelle offre</b></a>
+{% endblock %}

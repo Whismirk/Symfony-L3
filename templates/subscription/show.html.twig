@@ -1,0 +1,27 @@
+{% extends 'espace-client/layout.html.twig' %}
+
+{% block title %}Récapitulatif d'abonnement{% endblock %}
+
+{% block body %}
+    <h1>Récapitulatif d'abonnement</h1>
+
+    <table class="table">
+            <tr>
+                <th>Offre</th>
+                <td>{{ subscription.getOffer().getTitle() }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ subscription.getOffer().getPrice() }}€</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ subscription.state }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ subscription.getOffer().getOfferText() }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

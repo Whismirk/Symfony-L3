@@ -1,0 +1,34 @@
+{% extends 'espace-client/layout.html.twig' %}
+
+{% block title %}Vos abonnements{% endblock %}
+
+{% block body %}
+    <h1>Vos abonnements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Offre</th>
+                <th>Prix</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subscription in subscriptions %}
+            <tr>
+                <td>{{ subscription.getOffer().getTitle() }}</td>
+                <td>{{ subscription.getOffer().getPrice() }}€</td>
+                <td>{{ subscription.state }}</td>
+                <td>
+                    <a href="{{ path('subscription_show', {'id': subscription.id}) }}"><b>Voir</b></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun abonnement en cours.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,21 @@
+<style>
+    .btn-delete
+    {
+        position: relative;
+        right: 12px;
+        color: darkred;
+    }
+
+    .btn-delete:hover
+    {
+        transition-duration: 0.5s;
+        transform: translateX(10px);
+        color: red;
+    }
+</style>
+
+<form method="post" action="{{ path('contact_delete', {'id': contact.id}) }}" onsubmit="return confirm('Souhaitez vous vraiment supprimer définitivement ce message ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contact.id) }}">
+    <button class="btn btn-delete"><b>Supprimer le message</b></button>
+</form>

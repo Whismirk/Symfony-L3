@@ -1,0 +1,24 @@
+{% extends 'espace-client/layout.html.twig' %}
+
+{% block title %}Récapitulatif d'offre{% endblock %}
+
+{% block body %}
+    <h1>Récapitulatif d'offre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ offer.title }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ offer.price }}€</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ offer.offerText }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace Client{% endblock %}
+
+{% block layout %}
+
+    <div class="section first">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modifié pour afficher tout type de flash -->
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block navbar_links %}
+    <li><a class="nav-link active" href="{{ path('user_home')}}">Votre profil</a></li>
+    <li><a class="nav-link active" href="{{ path('user_subscriptions')}}">Vos abonnements</a></li>
+    <li><a class="nav-link active" href="{{ path('offer_index')}}">Offres</a></li>
+{% endblock %}

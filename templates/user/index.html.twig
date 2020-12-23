@@ -1,0 +1,43 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+
+    <h1>Utilisateurs</h1>
+
+    <style>
+        .act:hover
+        {
+            transform: scale(1.1);
+        }
+    </style>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Adresse e-mail</th>
+                <th>Age</th>
+                <th>Roles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.getAge() }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}" class="act"><b>Voir</b></a> |
+                    <a href="{{ path('user_edit', {'id': user.id}) }}" class="act"><b>Modifier</b></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun utilisateur existant.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

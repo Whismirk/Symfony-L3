@@ -1,0 +1,21 @@
+<style>
+    .btn-delete
+    {
+        position: relative;
+        right: 12px;
+        color: darkred;
+    }
+
+    .btn-delete:hover
+    {
+        transition-duration: 0.5s;
+        transform: translateX(10px);
+        color: red;
+    }
+</style>
+
+<form method="post" action="{{ path('subscription_delete', {'id': subscription.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ subscription.id) }}">
+    <button class="btn btn-delete">Supprimer l'abonnement</button>
+</form>

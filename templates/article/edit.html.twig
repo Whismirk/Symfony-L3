@@ -1,13 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/layout.html.twig' %}
 
-{% block title %}Edit Article{% endblock %}
+{% block title %}Modifier un article{% endblock %}
 
 {% block body %}
-    <h1>Edit Article</h1>
+    <h1>Édition d'article</h1>
 
-    {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('article_index') }}">back to list</a>
-
+    {{ include('article/_form.html.twig') }}
     {{ include('article/_delete_form.html.twig') }}
 {% endblock %}

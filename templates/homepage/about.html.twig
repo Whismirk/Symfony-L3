@@ -1,0 +1,13 @@
+{% extends 'public/layout.html.twig' %}
+
+{% block title %}À propos{% endblock %}
+
+{% block body %}
+    {% for homepage in homepages %} <!--Vérification que la page existe bien (il n'y a de toute manière pas possibilité d'en créer plus d'une)-->
+        <h1>{{ homepage.titleAbout }}</h1>
+        <br>{{ homepage.textAbout }}
+    {% else %}
+        <h1>Page inexistante.</h1>
+        <br>Rendez-vous dans l'espace d'administration !
+    {% endfor %}
+{% endblock %}

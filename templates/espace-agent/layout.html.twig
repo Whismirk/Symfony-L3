@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace agent{% endblock %}
+
+{% block layout %}
+
+    <div class="section first">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modifié pour afficher tout type de flash -->
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block navbar_links %}
+    <li><a class="nav-link active" href="{{ path('subscription_index')}}">Gestion des souscriptions</a></li>
+{% endblock %}

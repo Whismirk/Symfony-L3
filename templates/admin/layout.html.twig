@@ -1,24 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Administration{% endblock %}
 
 {% block logo %}
-    <a class="navbar-brand" href="{{ path('admin')}}">
-        <img src="{{asset('images/admin_logo.png')}}" style="height: 110px;" alt="image">
+    <a class="navbar-brand" href="{{ path('admin_index')}}">
+        <img src="{{asset('images/logo.png')}}" style="height: 110px;" alt="image">
     </a>
 {% endblock %}
 
 {% block header_links %}
     <div class="site_information">
         <ul>
-            <li><a class="join_bt" href="{{ path('test_entity_index') }}">Voir le site</a></li>
+            <li><a class="join_bt" href="{{ path('index') }}">Voir le site</a></li>
         </ul>
     </div>
 {% endblock %}
 
 {% block navbar_links %}
-    <li><a class="nav-link active" href="{{ path('article_index')}}">Actualités</a></li>
+    <li><a class="nav-link active" href="{{ path('homepage_index')}}">Page d'accueil</a></li>
+    <li><a class="nav-link active" href="{{ path('admin_article_index')}}">Gestion des articles</a></li>
+    <li><a class="nav-link active" href="{{ path('contact_index')}}">Messages</a></li>
+    <li><a class="nav-link active" href="{{ path('user_index')}}">Utilisateurs</a></li>
+    <li><a class="nav-link active" href="{{ path('admin_offer_index')}}">Offres</a></li>
 {% endblock %}
+
 
 {% block layout %}
 
@@ -32,5 +37,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Modifié pour afficher tout type de flash -->
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
 
 {% endblock %}

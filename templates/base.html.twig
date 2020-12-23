@@ -6,6 +6,25 @@
 
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
+
+        <style>
+            .alert-error
+            {
+                color: red;
+                font-weight: bold;
+            }
+            .btn
+            {
+                position: relative;
+                right: 12px;
+            }
+            .btn:hover
+            {
+                transform: translateX(10px);
+                transition-duration: 0.5s;
+                color: orange;
+            }
+        </style>
     {% endblock %}
 
     <!--[if lt IE 9]>
@@ -33,11 +52,12 @@
                 {% block header_links %}
                     <div class="site_information">
                         <ul>
-                            <li><a href="mailto:exchang@gmail.com"><img src="{{ asset('images/mail_icon.png') }}" alt="#"/>exchang@gmail.com</a>
-                            </li>
-                            <li><a href="tel:exchang@gmail.com"><img src="{{ asset('images/phone_icon.png') }}" alt="#"/>+7123569847</a>
-                            </li>
-                            <li><a class="join_bt" href="#">Join us</a></li>
+                            <li><a href="mailto:exchang@gmail.com"><img src="{{ asset('images/mail_icon.png') }}" alt="#"/>exchang@gmail.com</a></li>
+                            <li><a href="tel:exchang@gmail.com"><img src="{{ asset('images/phone_icon.png') }}" alt="#"/>+7123569847</a></li>
+
+                            {% if app.user %} <li><a class="join_bt" href="/logout">Déconnexion</a></li>
+                            {% else %} <li><a class="join_bt" href="/login">S'identifier</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 {% endblock %}
@@ -60,12 +80,10 @@
                             <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                                 <ul class="navbar-nav">
                                     {% block navbar_links %}
-                                        <li><a class="nav-link active" href="{{ path('index') }}">Home</a></li>
-                                        <li><a class="nav-link" href="about.html">About</a></li>
-                                        <li><a class="nav-link" href="exchange.html">Exchange</a></li>
-                                        <li><a class="nav-link" href="services.html">Services</a></li>
-                                        <li><a class="nav-link" href="{{ path('article_index') }}">News</a></li>
-                                        <li><a class="nav-link" href="{{ path('contact') }}">Contact</a></li>
+                                        <li><a class="nav-link active" href="{{ path('index') }}">Accueil</a></li>
+                                        <li><a class="nav-link" href="{{ path('about') }}">À propos</a></li>
+                                        <li><a class="nav-link" href="{{ path('article_index') }}">Actualités</a></li>
+                                        <li><a class="nav-link" href="{{ path('contact_new') }}">Contact</a></li>
                                     {% endblock %}
                                 </ul>
                             </div>

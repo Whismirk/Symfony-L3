@@ -1,0 +1,34 @@
+{% extends 'espace-agent/layout.html.twig' %}
+
+{% block title %}Gestion des souscriptions{% endblock %}
+
+{% block body %}
+    <h1>Liste des souscriptions</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Offre</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subscription in subscriptions %}
+            <tr>
+                <td>{{ subscription.getUser().getEmail() }}</td>
+                <td>{{ subscription.getOffer().getTitle() }}</td>
+                <td>{{ subscription.state }}</td>
+                <td>
+                    <a href="{{ path('subscription_edit', {'id': subscription.id}) }}"><b>Modifier</b></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun client ne possède de souscription en cours.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

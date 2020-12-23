@@ -1,52 +1,42 @@
-{% extends 'public/layout.html.twig' %}
+{% extends 'admin/layout.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Messages{% endblock %}
 
 {% block body %}
-    <!-- section -->
-    <div class="section layout_padding padding_top_0">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="heading_main text_align_center">
-                            <h2><span class="theme_color"></span>Contact</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
-    <!-- contact_form -->
-    <div class="section contact_form">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="full">
-                        <form class="contact_form_inner" action="#">
-                            <fieldset>
-                                <div class="field">
-                                    <input type="text" name="name" placeholder="Your name" />
-                                </div>
-                                <div class="field">
-                                    <input type="email" name="email" placeholder="Email" />
-                                </div>
-                                <div class="field">
-                                    <input type="text" name="phone_no" placeholder="Phone number" />
-                                </div>
-                                <div class="field">
-                                    <textarea placeholder="Message"></textarea>
-                                </div>
-                                <div class="field center">
-                                    <button>SEND</button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end contact_form -->
+    <style>
+        .btn:hover
+        {
+            transition-duration: 0.5s;
+            transform: translateX(10px);
+            color: orange;
+        }
+    </style>
+
+    <h1>Messages</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Expéditeur</th>
+                <th>Adresse e-mail</th>
+                <th>Objet</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.title }}</td>
+                <td>{{ contact.created|date('d/m/Y') }}</td>
+                <td><a href="{{ path('contact_show', {'id': contact.id}) }}" class="btn"><b>Ouvrir</b></a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Vous n'avez aucun nouveau message !</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

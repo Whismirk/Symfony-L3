@@ -1,34 +1,28 @@
+
 {% extends 'public/layout.html.twig' %}
 
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+    <h1>{{ article.title }}</h1>
+    <h3>{{ article.subtitle }}</h2>
+    <i>Publié le <b>{{ article.created|date("d/m/y") }}</b>.</i> <!-- Ne peut pas être converti en string dans le filtre date. -->
+    <br><br>{{ article.content }}<br>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ article.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ article.content }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{{ article.created ? article.created|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('article_index') }}">back to list</a>
-
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-
-    {{ include('article/_delete_form.html.twig') }}
+    <div class="row">
+        {% for other_article in articles %}
+            {% if other_article.id is not same as(article.id) %}
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="full news_blog">
+                        <img class="img-responsive" src="{{ article.imageFilename }}" alt="#" />
+                        <div class="overlay">><a class="main_bt transparent" href="{{ path('article_show', { 'id' : other_article.id }) }}">Voir</a></div>
+                        <div class="blog_details">
+                            <h3>{{ other_article.title }}</h3>
+                            <p>{{ other_article.subtitle }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}
